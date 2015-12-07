@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/savagepopsicle/like/issues"
   },
-  "homepage": "https://github.com/savagepopsicle/like#readme"
+  "homepage": "https://github.com/savagepopsicle/like#readme",
+  "devDependencies": {
+    "json-server": "^0.8.3"
+  }
 }
