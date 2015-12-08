@@ -63,3 +63,30 @@ describe('Services', function () {
     });
   });
 });
+
+describe('Controllers', function () {
+
+  describe('Login Controller', function () {
+    beforeEach(module('like'));
+    beforeEach(module('login'));
+
+    var controller;
+    var $rootScope;
+    var scope;
+
+    beforeEach(inject(function (_$controller_, _$rootScope_) {
+      $controller = _$controller_;
+      $rootScope = _$rootScope_;
+      scope = $rootScope.$new();
+      controller = $controller('loginCtrl', {$scope: scope});
+    }));
+
+    it('should have a login function', function () {
+      expect(scope.login).to.exist;
+    });
+
+    it('should load angular', function () {
+      expect(angular).to.exist;
+    });
+  });
+});

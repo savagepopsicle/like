@@ -16,8 +16,10 @@ module.exports = function (config) {
     // list of files / patterns to load in the browser
     files: [
       'public/vend/angular.js',
+      'public/vend/angular-route.min.js',
       'public/vend/angular-mocks.js',
       'public/app/app.js',
+      'public/app/controllers/login.js',
       'public/app/services/services.js',
       'test/client/clientSpec.js'
     ],
