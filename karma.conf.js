@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Mon Dec 07 2015 14:35:27 GMT-0800 (PST)
 
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -18,7 +18,7 @@ module.exports = function(config) {
       'public/vend/angular.js',
       'public/vend/angular-mocks.js',
       'public/app/app.js',
-      'public/app/services/service.js',
+      'public/app/services/services.js',
       'test/client/clientSpec.js'
     ],
 
@@ -70,5 +70,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultanous
     concurrency: Infinity
-  })
-}
+  });
+};
