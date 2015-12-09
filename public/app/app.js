@@ -20,7 +20,7 @@ myApp.config(function ($routeProvider) {
     })
     .when('/browse', {
       templateUrl : './app/templates/browse.html',
-      controller : 'browseCtrl' 
+      controller : 'browseCtrl'
     })
     .when('/dashboard', {
       templateUrl : './app/templates/dashboard.html',

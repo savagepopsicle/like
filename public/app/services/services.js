@@ -10,9 +10,7 @@
       data: userObj
      });
     };
-    var logout = function () {
-      
-    };
+    var logout = function () {};
     return {
       login: login,
       logout : logout
