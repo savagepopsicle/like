@@ -163,58 +163,33 @@ describe('Controllers', function () {
   describe('Browse controller', function () {
   beforeEach(module('like.browse'));
 
-  var controller;
+  var $controller;
+  var $rootScope;
   var $httpBackend;
-  var $scope;
+  var scope;
 
-  beforeEach(inject(function (_$controller_, $injector) {
-    controller = _$controller_;
-    $httpBackend = $injector.get('$httpBackend');
-    $scope = {};
-    controller('browseCtrl', { $scope: $scope });
+  beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_) {
+    $controller = _$controller_;
+    $rootScope = _$rootScope_;
+    scope = $rootScope.$new();
+    $httpBackend = _$httpBackend_;
+    $controller('browseCtrl', {$scope: scope});
   }));
 
-  afterEach(function () {
+  it('should have getAllUsers function', function () {
+    expect(scope.getAllUsers).to.exist;
+  });
+
+  it('should call getAllUsers once', function () {
+    var mockUsers = '[{}, {}, {}]';
+    $httpBackend.expectGET('/api/browse').respond(mockUsers);
+    $httpBackend.flush();
+
+    expect(scope.users.data).to.deep.equal([{}, {}, {}]);
+
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
   });
-
-  it('should make http request to /api/browse', function () {
-    //invoke the function then check and see if it make a get request to /api/browse/
-    $httpBackend.expect('GET', '/api/browse').respond(200);
-    $httpBackend.flush();
   });
 
-  it('should set $scope to false if server respond with 400', function () {
-    $httpBackend.expect('GET', '/api/browse').respond(400);
-    scope.getAllUsers();
-    $httpBackend.flush();
-    expect($scope.data).to.equal(false);
-  });
-
-  it('should set $scope to an object if server respond with 200', function () {
-    $httpBackend.expect('GET', '/api/browse').respond(200, {});
-    $scope.getAllUsers();
-    $httpBackend.flush();
-    expect($scope.data).to.be.an('object');
-  });
-
-});
-  describe('Browse Controller', function () {
-    var controller;
-    var $rootScope;
-    var scope;
-
-    beforeEach(module('like.browse'));
-    beforeEach(inject(function (_$controller_, _$rootScope_) {
-      $controller = _$controller_;
-      $rootScope = _$rootScope_;
-      scope = $rootScope.$new();
-      controller = $controller('browseCtrl', {$scope: scope});
-    }));
-
-    it('should have a browseRegionalUsers function', function () {
-      expect(scope.browseRegionalUsers).to.exist;
-    });
-  });
 });
