@@ -1,26 +1,20 @@
-angular.module('browse', []).controller('browseCtrl', function ($scope, $http) {
+(function () {
+  'use strict';
 
-  $scope.getAllUser = function(){
-    $http({
-      method : 'get',
-      url : '/api/browse',
-    }).then(function succ(res){
-      $scope.data = res;
-    }, function err(res){
-      $scope.data = false;
-    });
-  };
+  angular.module('like.browse', [])
+  .controller('browseCtrl', ['$scope', 'browseService', function ($scope, browseService) {
+    $scope.users = {};
 
+    $scope.getAllUsers = function () {
+      browseService.getAllUsers()
+      .then(function (users) {
+        $scope.users.data = users.data;
+      })
+      .catch(function (err) {
+        console.error('BROWSE — GET USERS ERRORS:', err);
+      });
+    };
 
-});
-// //////////////////////////////////////////////
-// (function() {
-//   'use strict';
-//
-//   angular.module('like.browse', [])
-//   .controller('browseCtrl', ['$scope', function ($scope) {
-//     $scope.browseRegionalUsers = function (region) {
-//       browseService.browse(region);
-//     };
-//   }]);
-// })();
+    $scope.getAllUsers();
+  }]);
+})();
