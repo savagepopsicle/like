@@ -135,7 +135,6 @@ describe('Controllers', function () {
     var $controller;
     var $rootScope;
     var scope;
-    var $http;
     var $httpBackend;
 
     beforeEach(inject(function (_$controller_, _$rootScope_, _$httpBackend_) {
@@ -155,9 +154,9 @@ describe('Controllers', function () {
     });
 
     it('should call getUserData once', function () {
-      $httpBackend.expectGET('/api/users/').response('user no. 0');
+      $httpBackend.expectGET('/api/users/').respond('user no. 0');
       $httpBackend.flush();
-      expect($scope.userData).to.eql('user no. 0');
+      expect(scope.userData).to.eql('user no. 0');
     });
   });
 
@@ -188,7 +187,7 @@ describe('Controllers', function () {
 
   it('should set $scope to false if server respond with 400', function () {
     $httpBackend.expect('GET', '/api/browse').respond(400);
-    $scope.getAllUsers();
+    scope.getAllUsers();
     $httpBackend.flush();
     expect($scope.data).to.equal(false);
   });
