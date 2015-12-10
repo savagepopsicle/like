@@ -13,7 +13,7 @@
         return data.data.userId;
       }).catch(function (err) {
         console.log('in register---------got this for making $http call:', err);
-        return err;
+        return err.status;
       });
     }; //close register
 

@@ -222,11 +222,23 @@ describe('Controllers', function () {
         password: 'password'
       };
       scope.register(userObj).then(function (userId) {
-        console.log('------------', userId);
         expect(userId).to.equal(1);
       });
       $httpBackend.flush();
     });
+
+    it('should return an err from server', function () {
+      $httpBackend.expectPOST('/api/register').respond(400);
+      var userObj = {
+        username: 'John',
+        password: 'password'
+      };
+      scope.register(userObj).then(function (err) {
+        expect(err).to.equal(400);
+      });
+      $httpBackend.flush();
+    });
+
   });
 
 });
