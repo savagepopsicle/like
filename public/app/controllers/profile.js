@@ -5,16 +5,20 @@
   .controller('profileCtrl', ['$scope', '$http','dashboardService', '$location', function ($scope, $http, dashboardService, $location) {
 
     $scope.targetUserId = sessionStorage.getItem('targetUserId');
-
+    $scope.pubUserData = {
+      awesomeness: 1000,
+      handsomeness: 2000,
+      iq: 3000
+    };
     $scope.getUserData = function (userId) {
 
       return dashboardService.getUserData(userId)
       .then(function (data) {
-        $scope.pubUserData = data;
+        // $scope.pubUserData = data;
         return data;
       })
       .catch(function (data) {
-        $scope.pubUserData = false;
+        // $scope.pubUserData = false;
         return false;
       });
     };
