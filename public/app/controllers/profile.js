@@ -27,7 +27,7 @@
       $location.path('/dashboard');
     };
 
-    $scope.castVote = function (thumb) {
+    $scope.sendVote = function (thumb) {
       return $http({
         method: 'POST',
         url: '/api/profile/' + $scope.targetUserId,
