@@ -66,6 +66,11 @@
         return data;
       });
     };
+
+    var sendVote = function () {
+
+    };
+
     return {getAllUsers: getAllUsers};
   });
 })();
