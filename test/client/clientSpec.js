@@ -229,7 +229,6 @@ describe('Controllers', function () {
       $httpBackend.flush();
 
       expect(scope.users.data).to.deep.equal(mockUsers);
-
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
     });
@@ -258,6 +257,7 @@ describe('Controllers', function () {
     });
 
     it('should create a new user', function () {
+
       $httpBackend.expectPOST('/api/user/create').respond(200, {
         userId: 1});
       var userObj = {
@@ -272,6 +272,7 @@ describe('Controllers', function () {
 
     it('should return an err from server', function () {
       $httpBackend.expectPOST('/api/user/create').respond(400);
+
       var userObj = {
         username: 'John',
         password: 'password'
