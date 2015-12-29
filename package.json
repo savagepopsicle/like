@@ -1,5 +1,5 @@
 {
-  "name": "like",
+  "name": "persona",
   "version": "0.0.1",
   "description": "Yelp for people",
   "main": "server/server.js",
