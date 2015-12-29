@@ -3,3 +3,4 @@ node_modules
 .floo*
 notes.txt
 public/dist
+public/vend
