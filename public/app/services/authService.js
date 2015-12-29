@@ -6,32 +6,30 @@
     var logIn = function (userObj) {
      return $http({
       method: 'POST',
-      url: '/api/user/signin',
+      url: '/api/signin',
       data: userObj
-      //useObj: {username: username, password: password}
      });
     };
 
     var logOut = function () {
       return $http({
         method: 'POST',
-        url: '/api/user/signout'
-        //{}
+        url: '/api/signout'
       });
     };
 
     var register = function (useObj) {
       return $http({
         method: 'POST',
-        url: '/api/user/create',
+        url: '/api/profile/',
         data: useObj
       });
     };
-
+////need to test this with server
     var update = function (userDataObj) {
       return $http({
         method: 'PUT',
-        url: 'api/user/update/' + userDataObj.userId,
+        url: 'api/profile/',
         data: userDataObj
       }).then(function (data) {
         return data;
@@ -40,10 +38,11 @@
       });
     };
 
+////need to test this with server
     var deleteUser = function (userId) {
       return $http({
         method: 'DELETE',
-        url: 'api/delete/' + userId
+        url: 'api/profile/'
       }).then(function (data) {
         return data;
       }).catch(function (data) {
