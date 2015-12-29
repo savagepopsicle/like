@@ -40,6 +40,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.1.0",
+    "load-grunt-tasks": "^3.4.0",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
     "pre-commit": "^1.1.2",

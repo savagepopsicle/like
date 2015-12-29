@@ -1,4 +1,7 @@
 module.exports = function (grunt) {
+
+	require('load-grunt-tasks')(grunt);
+
 	grunt.initConfig({
 
 	    pkg: grunt.file.readJSON('package.json'),
@@ -21,8 +24,6 @@ module.exports = function (grunt) {
 			dist : {
 					'dist/app.min.js': 'public/*.js',
 				   }
-				   
-
 		},
 		jsdoc : {
 
@@ -37,14 +38,8 @@ module.exports = function (grunt) {
 					destination : 'Doc',
 				}
 			}
-
 		}
 	});
-
-	grunt.loadNpmTasks("grunt-contrib-watch");
-	grunt.loadNpmTasks("grunt-contrib-uglify");
-	grunt.loadNpmTasks("grunt-contrib-concat");
-	grunt.loadNpmTasks("grunt-jsdoc");
 
 	grunt.registerTask('build', ['concat']);
 }
