@@ -1,40 +1,32 @@
 (function () {
   'use strict';
 
-  angular.module('like.dashboard', []).controller('dashboardCtrl', ['$scope', 'authService', 'dataService', '$location', function ($scope, authService, dataService, $location) {
-    $scope.userData = {};
-
-    $scope.logout = function (username, password) {
-      // authService.logout();
-      $location.path('/login');
-    };
+  angular.module('like.dashboard', ['like.stat']).controller('dashboardCtrl', ['$scope', 'authService', 'dataService', '$location', '$mdSidenav', function ($scope, authService, dataService, $location, $mdSidenav) {
+ 
+    $scope.data = 'dashboard';
 
     $scope.getLogedInUserData = function (UserId) {
       dataService.getLogedInUserData(UserId)
-      .then(function (user) {
-        $scope.userData = user.data;
-        setTimeout(function () {
-          $scope.getLogedInUserData(sessionStorage.getItem('useId') || '');
-          console.log('auto data renewal-------from dashboard!!!!!');
-        }, 30000);
+      .then(function (res) {
+        $scope.userData = res.data;
       })
       .catch(function (err) {
         console.error('DASHBOARD — GET USER DATA ERROR:', err);
       });
     };
 
-    $scope.redirect = function () {
-      $location.path('/browse');
-    };
     $scope.getLogedInUserData(sessionStorage.getItem('useId') || '');
 
     $scope.showDelete = false;
     $scope.showUpdate = false;
 
-  }]);
+    $scope.openLeftMenu = function() {
+      $mdSidenav('left').toggle();
+    };
 
-
+  }]).controller('MyController', function($scope, $mdSidenav) {
+    $scope.openLeftMenu = function() {
+      $mdSidenav('left').toggle();
+    };
+  });
 })();
-
-// TODO : Need to create User Constant to save user data across multiple controllers.
-// TODO : Create new service to submit a GET request to populate the browse and dashboard template.

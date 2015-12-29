@@ -24,6 +24,7 @@ app.use(express.static('public'));
 
 app.post('/api/signin', function(req, res, next) {
   util.authenticateUser(req, res, next, passport);
+  //should check and see if user even exit
   //should return private profile on successful login
 });
 
@@ -41,11 +42,21 @@ app.get('/api/browse', util.isAuthorized, function(req, res) {
 
 app.post('/api/signout', util.signUserOut);
 
-app.post('/api/profile/create', util.checkUsername, util.createUser);
+app.post('/api/profile/', util.checkUsername, util.createUser);
+app.put('/api/profile/', util.isAuthorized, util.updateUser);
+app.delete('/api/profile/', util.isAuthorized, util.deleteUser);
 
 //TODO : add more to route, only checking to see if user is authenticated
-app.use('/api/vote', util.isAuthorized, function(req, res) {
-  res.sendStatus(200);
+app.post('/api/vote', util.isAuthorized, function (req, res) {
+  util.createOrUpdateVote(req.body.treats, req.session.passport.user, req.body.votee)
+  .then(function () {
+    res.sendStatus(201);
+    return;
+  }).catch(function (err) {
+    res.sendStatus(400);
+    console.error('Error in /api/vote: ', err);
+    return;
+  });
 });
 
 app.get('/api/profile/:id', util.isAuthorized, function (req, res) {
