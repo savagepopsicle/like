@@ -1,32 +1,42 @@
 (function () {
   'use strict';
 
-  angular.module('like.login', []).controller('loginCtrl', ['$scope', 'authService', '$location', function ($scope, authService, $location) {
-    $scope.username = '';
-    $scope.password = '';
+  angular.module('like.login', ['like.slideMenu']).controller('loginCtrl', ['$scope', 'authService', '$location', function ($scope, authService, $location) {
+
+    console.log($scope.userState);
     $scope.login = function (username, password) {
       var userObj = {
         username: username,
         password: password
       };
-      //server not ready so commended out these lines:
-      // authService.logIn(userObj)
-      // .then(function (data) {
-      //   console.log('----------login from server:', data);
-      //   // if successfully logged in
-      //     sessionStorage.setItem('userId', data.userId || "");
-      //     // redirect
-      //   // else
-      //     // tell the user password or username wrong
-      // })
-      // .catch(function (err) {
-      //   console.log('--------login err: ', err);
-      // });
-      $location.path('/dashboard');
+      authService.logIn(userObj)
+      .then(function (data) {
+        sessionStorage.setItem('userId', data.userId || "");
+        $location.path('/dashboard');
+      })
+      .catch(function (err) {
+        console.log('--------login err: ', err);
+      });
     };
 
-    $scope.goToRegister = function () {
-      $location.path('/register');
+    $scope.emailCheck = function (str) {
+      return /^\s*[\w-_\.\+]+@[\w-]+\.[\w-\.]+$/.test(str);
     };
+    $scope.register = function (userObj) {
+      if (userObj.password === userObj.confirm) {
+        return authService.register(userObj)
+        .then(function (data) {
+          return data.data.userId;
+        })
+        .then (function (userId) {
+          sessionStorage.setItem('userId', userId);
+          $location.path('/dashboard');
+        })
+        .catch(function (err) {
+          return err.status;
+        });
+      }
+    };
+
   }]);//close controller def
 })();
