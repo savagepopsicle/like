@@ -1,14 +1,27 @@
 module.exports = function (grunt) {
 	grunt.initConfig({
-		
-		watch : {
-			files : ["README.md"],
-		    tasks : ["holla"]
-		},
-		concat : {
 
+	    pkg: grunt.file.readJSON('package.json'),
+
+		watch : {
+			files : [],
+		    tasks : []
 		},
+		concat: {
+
+	      options: {
+	        separator: ';'
+	      },
+	      dist: {
+	        src: ['public/**/*.js'],
+	        dest: 'public/dist/<%= pkg.name %>.js'
+	      }
+       },
 		uglify : {
+			dist : {
+					'dist/app.min.js': 'public/*.js',
+				   }
+				   
 
 		},
 		jsdoc : {
@@ -21,7 +34,7 @@ module.exports = function (grunt) {
 						   'server/**/*.js'
 						  ],
 				options : {
-					destination : 'doc',
+					destination : 'Doc',
 				}
 			}
 
@@ -33,7 +46,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks("grunt-contrib-concat");
 	grunt.loadNpmTasks("grunt-jsdoc");
 
-	grunt.registerTask('holla', function() {
-		console.log('Setting up grunt');
-	});
+	grunt.registerTask('build', ['concat']);
 }
