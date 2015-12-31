@@ -1,5 +1,5 @@
 {
-  "name": "like",
+  "name": "persona",
   "version": "0.0.1",
   "description": "Yelp for people",
   "main": "server/server.js",
@@ -27,6 +27,11 @@
   "homepage": "https://github.com/savagepopsicle/like#readme",
   "devDependencies": {
     "chai": "^3.4.1",
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jsdoc": "^1.1.0",
     "jscs": "^2.6.0",
     "json-server": "^0.8.3",
     "karma": "^0.13.15",
@@ -35,6 +40,7 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-sinon": "^1.0.4",
     "karma-sinon-chai": "^1.1.0",
+    "load-grunt-tasks": "^3.4.0",
     "mocha": "^2.3.4",
     "phantomjs": "^1.9.19",
     "pre-commit": "^1.1.2",
