@@ -1,6 +1,6 @@
 ##Welcome to Persona!
 #Persona is peer base personality evaluation platform
-![ScreenShot](https://cloudup.com/cDjVlQ-lBDx)
+![ScreenShot](https://cldup.com/fSkM-xBEui.gif)
 
 ## Documentation
   
