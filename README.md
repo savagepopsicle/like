@@ -1,29 +1,6 @@
-Welcome to Persona! You can find information related to the development of Like and everything else.
-
-## Week Schedule
-
-- Week 1 v0.1 (MVP)
-
-- Week 2 v0.2
-
-- Week 3 v0.3
-
-## Sprint Schedule
-
-This project is based on two-day sprints. Every week consists of three sprints.
-
-Day 1:
-- 10:10 Stand up 1: recap the plan for last stand up
-- 13:40/14:40 stand up 2 (quick): voice up about challenges and concerns 
-- 18:50 Stand up 3: plan for next day
-
-Day 2: 
-- 10:10 Stand up 1: recap the plan for last stand up
-- 13:40/14:40 Stand up 2 (quick): voice up about challenges and concerns
-- 16:00 Pre-merge peer review
-- 18:50 Stand up 3: plan for next sprint
-
-Group code review (by feature) and spiking will be scheduled as needed.
+##Welcome to Persona!
+#Persona is peer base personality evaluation platform
+![ScreenShot](https://cloudup.com/cDjVlQ-lBDx)
 
 ## Documentation
   
